@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuestionario Angular</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="contenedor">
+
+    <!-- Inicio -->
+    <section id="inicio" class="pantalla tarjeta">
+      <p class="sobretitulo">Angular Essentials</p>
+      <h1>Cuestionario de repaso</h1>
+      <p class="bajada">
+        Preguntas de opción múltiple sobre componentes, signals, plantillas, formularios e
+        inyección de dependencias. Al terminar vas a ver tu puntaje y la respuesta correcta de cada pregunta.
+      </p>
+      <form id="form-inicio">
+        <fieldset>
+          <legend>Nivel de dificultad</legend>
+          <div class="chips" id="chips-nivel"></div>
+        </fieldset>
+        <label class="check">
+          <input type="checkbox" name="mezclar" checked>
+          Mezclar el orden de las preguntas
+        </label>
+        <button type="submit" class="btn primario" id="btn-comenzar">Comenzar</button>
+      </form>
+    </section>
+
+    <!-- Cuestionario -->
+    <section id="quiz" class="pantalla" hidden>
+      <header class="quiz-cabecera">
+        <div class="quiz-meta">
+          <h2 id="titulo-pregunta" tabindex="-1"></h2>
+          <span id="respondidas" class="respondidas"></span>
+        </div>
+        <progress id="progreso" aria-labelledby="respondidas"></progress>
+      </header>
+
+      <form id="form-pregunta" class="tarjeta">
+        <div class="etiquetas">
+          <span id="tema" class="tema"></span>
+          <span id="dificultad"></span>
+        </div>
+        <div id="enunciado" class="enunciado"></div>
+        <div id="opciones" class="opciones" role="radiogroup" aria-labelledby="enunciado"></div>
+        <div class="navegacion">
+          <button type="button" id="btn-anterior" class="btn">← Anterior</button>
+          <button type="submit" id="btn-siguiente" class="btn primario">Siguiente →</button>
+        </div>
+      </form>
+
+      <nav class="mapa" aria-labelledby="titulo-mapa">
+        <div class="mapa-cabecera">
+          <h3 id="titulo-mapa">Todas las preguntas</h3>
+          <button type="button" id="btn-finalizar" class="btn enlace">Finalizar y ver resultados</button>
+        </div>
+        <ol id="mapa"></ol>
+      </nav>
+    </section>
+
+    <!-- Resultados -->
+    <section id="resultados" class="pantalla" hidden>
+      <div class="tarjeta resumen">
+        <h2 id="titulo-resultados" tabindex="-1">Tu puntaje</h2>
+        <p class="puntaje"><span id="puntaje"></span><span id="puntaje-total" class="puntaje-total"></span></p>
+        <p id="puntaje-detalle" class="puntaje-detalle"></p>
+        <p id="mensaje" class="mensaje"></p>
+        <ul id="por-nivel" class="por-nivel" aria-label="Aciertos por nivel de dificultad"></ul>
+        <div class="acciones">
+          <button type="button" id="btn-repetir" class="btn primario"></button>
+          <button type="button" id="btn-inicio" class="btn">Volver al inicio</button>
+        </div>
+      </div>
+
+      <div class="revision-cabecera">
+        <h2>Revisión</h2>
+        <div class="filtros" role="group" aria-label="Filtrar revisión">
+          <button type="button" data-filtro="todas">Todas <small></small></button>
+          <button type="button" data-filtro="incorrectas">Incorrectas <small></small></button>
+          <button type="button" data-filtro="correctas">Correctas <small></small></button>
+        </div>
+      </div>
+      <ol id="revision" class="revision"></ol>
+    </section>
+
+  </main>
+
+  <script src="preguntas.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
