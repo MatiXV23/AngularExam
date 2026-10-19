@@ -1205,7 +1205,7 @@ const PREGUNTAS = [
       },
       {
         "texto": "Escribir <code>usuario</code> sin paréntesis dentro del mensaje.",
-        "explicacion": "Sin paréntesis se obtiene la señal en sí y no su valor, así que el nombre del usuario no aparecería en la consola.",
+        "explicacion": "Sin paréntesis se usa la señal en sí y no su valor; no es la forma de mostrar el usuario sin depender de él.",
         "correcta": false
       },
       {
@@ -1321,7 +1321,7 @@ const PREGUNTAS = [
       },
       {
         "texto": "leer <code>velocidad</code> con <code>untracked</code> para que el effect no vuelva a ejecutarse nunca.",
-        "explicacion": "Así el effect dejaría de reaccionar a los cambios de velocidad, que es justamente lo que se necesita.",
+        "explicacion": "Así el effect dejaría de reaccionar a los cambios de <code>velocidad</code>, y justamente se necesita que reaccione a ellos.",
         "correcta": false
       },
       {
@@ -1979,7 +1979,7 @@ const PREGUNTAS = [
     "tema": "Routing",
     "titulo": "Redirigir la ruta vacía",
     "dificultad": "facil",
-    "enunciado": "Querés que, al entrar a la raíz del sitio, el usuario vaya directo a <code>/inicio</code>. ¿Qué ruta agregás?",
+    "enunciado": "Querés que, al entrar a la raíz del sitio, el usuario vaya directo a <code>/inicio</code>, sin cambiar lo que pasa con las demás URLs. ¿Qué ruta agregás?",
     "opciones": [
       {
         "texto": "<code>{ path: '', redirectTo: 'inicio', pathMatch: 'full' }</code>",
@@ -2055,7 +2055,7 @@ const PREGUNTAS = [
         "correcta": false
       },
       {
-        "texto": "nada, porque el <code>&lt;router-outlet&gt;</code> del componente raíz también muestra a las hijas, debajo del padre.",
+        "texto": "no hacer nada, porque el <code>&lt;router-outlet&gt;</code> del componente raíz también muestra a las hijas, debajo del padre.",
         "explicacion": "Cada nivel de rutas necesita su propio outlet, ubicado en el componente padre.",
         "correcta": false
       }
@@ -2143,7 +2143,7 @@ const PREGUNTAS = [
       },
       {
         "texto": "es obligatorio, porque sin él la petición no se puede enviar.",
-        "explicacion": "Es opcional: sin él, la respuesta queda con un tipo genérico.",
+        "explicacion": "Es opcional: sin él, la respuesta queda con el tipo <code>Object</code>.",
         "correcta": false
       }
     ]
@@ -2182,11 +2182,11 @@ const PREGUNTAS = [
     "tema": "Formularios",
     "titulo": "Mostrar el error en el momento justo",
     "dificultad": "facil",
-    "enunciado": "No querés que el error del campo <code>email</code> aparezca apenas se abre el formulario, sino después de que el usuario pasó por el campo. ¿Qué condición ponés en el <code>@if</code>?",
+    "enunciado": "No querés que el error del campo obligatorio <code>email</code> aparezca apenas se abre el formulario, sino después de que el usuario pasó por el campo. ¿Qué condición ponés en el <code>@if</code>?",
     "opciones": [
       {
         "texto": "<code>registroForm.email().touched() &amp;&amp; registroForm.email().invalid()</code>",
-        "explicacion": "<code>touched()</code> recién es verdadero cuando el usuario interactuó con el campo, así que el error no se ve antes.",
+        "explicacion": "<code>touched()</code> recién es verdadero cuando el usuario enfocó el campo y después salió de él, así que el error no se ve antes.",
         "correcta": true
       },
       {
@@ -2214,8 +2214,8 @@ const PREGUNTAS = [
     "enunciado": "Querés mostrar todos los mensajes de error del campo <code>clave</code> del formulario <code>cuentaForm</code>. ¿Qué recorrés con <code>@for</code>?",
     "opciones": [
       {
-        "texto": "<code>cuentaForm.clave().errors()</code>, una lista de errores con <code>kind</code> y <code>message</code>.",
-        "explicacion": "Cada error indica qué regla falló y el mensaje que se configuró para ella.",
+        "texto": "<code>cuentaForm.clave().errors()</code>, una lista de errores con <code>kind</code> y, si se configuró, <code>message</code>.",
+        "explicacion": "Cada error indica qué regla falló y, si se configuró, el mensaje para mostrar.",
         "correcta": true
       },
       {
@@ -2240,7 +2240,7 @@ const PREGUNTAS = [
     "tema": "Formularios",
     "titulo": "Varias reglas en un mismo campo",
     "dificultad": "facil",
-    "enunciado": "El campo <code>email</code> tiene las reglas <code>email()</code> y <code>minLength()</code> con un mínimo de 5 caracteres. Si el usuario escribe <code>a@b</code>,",
+    "enunciado": "El campo <code>email</code> tiene las reglas <code>email()</code> y <code>minLength()</code> con un mínimo de 5 caracteres. Si el usuario escribe <code>a@</code>,",
     "opciones": [
       {
         "texto": "aparecen los dos errores, porque se evalúan todas las reglas aunque alguna ya haya fallado.",
